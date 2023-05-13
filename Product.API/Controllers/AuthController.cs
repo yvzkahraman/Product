@@ -1,4 +1,5 @@
 ﻿using MediatR;
+using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Product.API.CQRS.Authentication;
@@ -6,6 +7,7 @@ using Product.API.Tools;
 
 namespace Product.API.Controllers
 {
+    [EnableCors("ONFCors")]
     [Route("api/[controller]")]
     [ApiController]
     public class AuthController : ControllerBase

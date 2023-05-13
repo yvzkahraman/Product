@@ -11,6 +11,14 @@ var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 
+builder.Services.AddCors(opt =>
+{
+    opt.AddPolicy("ONFCors", conf =>
+    {
+        conf.AllowAnyHeader().AllowAnyMethod().AllowAnyOrigin();
+    });
+});
+
 builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJwtBearer(opt =>
 {
     opt.RequireHttpsMetadata = false;
@@ -48,6 +56,8 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
+
+app.UseCors("ONFCors");
 
 app.UseAuthorization();
 

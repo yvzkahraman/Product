@@ -1,4 +1,5 @@
 ﻿using MediatR;
+using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Product.API.CQRS.CreateProduct;
@@ -9,6 +10,7 @@ using Product.API.CQRS.UpdateProduct;
 
 namespace Product.API.Controllers
 {
+    [EnableCors("ONFCors")]
     [Route("api/[controller]")]
     [ApiController]
     public class ProductsController : ControllerBase
